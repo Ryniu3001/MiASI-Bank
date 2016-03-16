@@ -10,14 +10,14 @@ public class PayIn extends Operation {
 	private double amount;
 	private double currentBalance;//balance before operation
    
-	//wp³ata type=1
+	//wpï¿½ata type=1
     
 	public PayIn(double amount,double currentBalance) {
 	 
 		this.type=1;
 		this.amount=amount;
 		this.currentBalance=currentBalance;
-		this.description="operacja wp³aty";
+		this.description="operacja wpï¿½aty";
 	     
 	}
 	 

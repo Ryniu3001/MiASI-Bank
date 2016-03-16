@@ -13,24 +13,21 @@ public class RefundCredit extends Operation {
 	
 	private Credit credit;
 	private Account account;
-	//sp³ata kredytu
+	//spï¿½ata kredytu
     
 	public RefundCredit(Account account,Credit credit) {
 	 
 		this.type=9;
 		this.account=account;
 		this.credit=credit;
-		this.description="operacja sp³aty kredytu";
+		this.description="operacja spï¿½aty kredytu";
 	     
 	}
 	 
 	public void execute() {
 	 
 		Calendar cal = Calendar.getInstance();
-		this.date = cal.getTime();
-		
-		
-		 
+		this.date = cal.getTime();		 
 	}
 
 }

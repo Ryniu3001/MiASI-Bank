@@ -18,13 +18,22 @@ public class Bank {
 	private List<Client> clients;
     private List<Operation> bankHistoryOperation;
     private List<Product> products;
+    private static Bank instance = null;
     
-    public Bank()
+    private Bank()
     {
     	clients=new ArrayList<Client>();
     	bankHistoryOperation=new ArrayList<Operation>();
     	products=new ArrayList<Product>();
     }
+    
+    public static Bank getInstance(){
+    	if (instance == null){
+    		instance = new Bank();
+    	}
+    	return instance;
+    }
+    
 	public void addClient(Client client)
 	{
 		clients.add(client);
@@ -32,8 +41,8 @@ public class Bank {
  
 	public void addAccount(Account account)
 	{
-		 //tutaj powinna byæ walidacja czy istnieje klient o idClient
-		//czy debet i balance jest wiêkszy od 0 jeœli nie to zg³oœ wyj¹tek
+		 //tutaj powinna byï¿½ walidacja czy istnieje klient o idClient
+		//czy debet i balance jest wiï¿½kszy od 0 jeï¿½li nie to zgï¿½oï¿½ wyjï¿½tek
 		products.add(account);
 	}
 	public Product getProduct(int id)
@@ -45,8 +54,9 @@ public class Bank {
 	{
 		return bankHistoryOperation;
 	}
-	 
-	
-	
+
+	public List<Product> getProducts() {
+		return products;
+	}
  
 }

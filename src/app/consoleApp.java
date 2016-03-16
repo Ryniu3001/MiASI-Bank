@@ -8,7 +8,7 @@ public class consoleApp {
 	
 	public static void main(String[] args)
 	{
-		Bank bank=new Bank();
+		Bank bank= Bank.getInstance();
 	 
 		bank.addClient(new Client("Zenek","Kowalski","321"));
 		bank.addAccount(new Account(500,1000,"321"));

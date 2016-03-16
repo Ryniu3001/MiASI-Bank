@@ -9,14 +9,16 @@ public class consoleApp {
 	public static void main(String[] args)
 	{
 		Bank bank=new Bank();
-		Client client=new Client("Zenek","Kowalski","5252");
-		bank.addClient(client);
+	 
+		bank.addClient(new Client("Zenek","Kowalski","321"));
 		
-		bank.getClient(0).addProduct(new Account(500,1000));
+		Account account=new Account(500,1000,"321");
+	 
+		 
+		 
+ 
 		
-		bank.Transfer(500, "124424224244242", (Account)bank.getClient(0).GetProduct(0));
-		
-		System.out.println("s");
+	 
 	}
 
 }

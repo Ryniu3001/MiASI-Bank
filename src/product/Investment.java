@@ -5,9 +5,9 @@ import product.Account;
 
 public class Investment extends Product {
 
-	private Account account;
-	public Investment(double balance,Account account) {
+ 
+	public Investment(double balance) {
 		super(balance);
-		this.account=account;
+		 
 	}
 }

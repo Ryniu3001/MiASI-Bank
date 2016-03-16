@@ -20,6 +20,7 @@ public class PayIn extends Operation {
 		this.type=1;
 		this.amount=amount;
 		this.currentBalance=currentBalance;
+		this.description="operacja wp³aty";
 	     
 	}
 	 

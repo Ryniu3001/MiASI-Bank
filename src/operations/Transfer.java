@@ -24,6 +24,7 @@ public class Transfer extends Operation {
 		this.numberAccount=numberAccount;
 	    this.currentBalance=currentBalance;
 	    this.maxdebit=maxdebit;
+	    this.description="operacja przelewu";
 	}
 	 
 	public double execute() {

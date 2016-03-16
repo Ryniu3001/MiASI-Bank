@@ -6,7 +6,6 @@ public class Interest {
 	private int period;
 	
 	/**
-	 * 
 	 * @param percentage oprocentowanie
 	 * @param period czestotliwosc naliczania odsetek w miesi¹cach
 	 */

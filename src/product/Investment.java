@@ -1,10 +1,13 @@
 package product;
 
-import client.Interest;
+ 
+import product.Account;
 
-public class Investment extends Account {
+public class Investment extends Product {
 
-	private Investment(double interests, double balance, Interest interest) {
-		super(interests, balance, interest);
+	private Account account;
+	public Investment(double balance,Account account) {
+		super(balance);
+		this.account=account;
 	}
 }

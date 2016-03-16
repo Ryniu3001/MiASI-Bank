@@ -1,9 +1,9 @@
 package history;
 
-import product.Account;
+import product.Product;
 
 public class ProductHistory {
 
-	private Account account;
+	private Product account;
 	
 }

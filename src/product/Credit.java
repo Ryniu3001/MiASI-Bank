@@ -2,9 +2,9 @@ package product;
 
 import client.Interest;
 
-public class Credit extends Account {
+public class Credit extends Product {
 
-	private Credit(double interests, double balance, Interest interest) {
-		super(interests, balance, interest);
+	private Credit(double balance) {
+		super(balance);
 	}
 }

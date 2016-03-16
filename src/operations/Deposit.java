@@ -30,7 +30,7 @@ public class Deposit extends Operation {
 	 
 		Calendar cal = Calendar.getInstance();
 		this.date = cal.getTime();
-		Investment investment=new Investment(amount,account);
+		Investment investment=new Investment(amount);
 		return investment;
 	}
 

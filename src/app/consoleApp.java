@@ -12,7 +12,7 @@ public class consoleApp {
 	 
 		bank.addClient(new Client("Zenek","Kowalski","321"));
 		
-		Account account=new Account(500,1000,"321");
+		 
 	 
 		 
 		 

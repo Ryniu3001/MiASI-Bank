@@ -30,6 +30,8 @@ public class PayOff extends Operation {
 		if(currentBalance+maxdebit>=amount)
 			return currentBalance-amount;
 	 
+		else
+			return -1;
 			
 		
 	}

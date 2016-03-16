@@ -1,15 +1,16 @@
 package client;
 
-public class Interest {
+public class InterestMechanism {
 
 	private double percentage;
 	private int period;
+	//mechanizm odsetkowy
 	
 	/**
 	 * @param percentage oprocentowanie
 	 * @param period czestotliwosc naliczania odsetek w miesi¹cach
 	 */
-	public Interest(double percentage, int period){
+	public InterestMechanism(double percentage, int period){
 		this.percentage = percentage;
 		this.period = period;
 	}

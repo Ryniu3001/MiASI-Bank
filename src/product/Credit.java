@@ -1,6 +1,10 @@
 package product;
 
-import client.Interest;
+import java.util.List;
+
+import client.InterestMechanism;
+import operations.Operation;
+import operations.RefundCredit;
 
 public class Credit extends Product {
 
@@ -12,10 +16,14 @@ public class Credit extends Product {
 		this.account=account;
 	}
 	//operacja sp³aty kredytu
-	public void refundCredit()
+	public void refundCredit(List<Operation> bankHistoryOperation)
 	{
 		//sprawdziæ czy account.balance wystarczy na sp³ate kredytu jesli tak pobierz z konta kase
-		//account.PayOff(amount, bankHistoryOperation);
+		RefundCredit refundCredit=new RefundCredit(account,this);
+		refundCredit.execute();
+	 
+		addOperationToHistory(bankHistoryOperation,refundCredit);
+		account.PayOff(balance, bankHistoryOperation);
 		this.isRefund=true;
 	}
 }

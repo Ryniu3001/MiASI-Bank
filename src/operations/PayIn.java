@@ -11,10 +11,7 @@ public class PayIn extends Operation {
 	private double currentBalance;//balance before operation
    
 	//wp³ata type=1
-    /**
-	 * @param amount kwota wp³aty
-	 * @param currentBalance aktualne saldo konta
-	 */
+    
 	public PayIn(double amount,double currentBalance) {
 	 
 		this.type=1;

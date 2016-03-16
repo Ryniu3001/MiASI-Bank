@@ -4,10 +4,12 @@ package product;
 import java.util.ArrayList;
 import java.util.List;
 
+import operations.Deposit;
 import operations.Operation;
 import operations.PayIn;
 import operations.PayOff;
 import operations.Transfer;
+import operations.TakeCredit;
 
 public class Account extends Product {
 
@@ -34,106 +36,46 @@ public class Account extends Product {
 	}
 	 
 	 
-	/**
-	 * operacja wp³aty
-	 * @param amount kwota przelewu
-	 * @param numberAccount numerkonta
-	 * @param account konto z którego zostanie wykonany przelew
-	 */
+	//operacja wp³aty
 	public void PayIn(double amount,List<Operation> bankHistoryOperation)
 	{
 		PayIn payIn=new PayIn(amount,balance);
 		balance=payIn.execute();
-		this.historyOfProduct.add(payIn);
-		bankHistoryOperation.add(payIn);		
+		addOperationToHistory(bankHistoryOperation,payIn);	
 	}
-	/**
-	 * operacja wyp³aty
-	 * @param amount kwota przelewu
-	 * @param numberAccount numerkonta
-	 * @param account konto z którego zostanie wykonany przelew
-	 */
+	//operacja wyp³aty
 	public void PayOff(double amount,List<Operation> bankHistoryOperation)
 	{
 		PayOff payOff=new PayOff(amount,balance,debit);
 		balance=payOff.execute();
-		this.historyOfProduct.add(payOff);
-		bankHistoryOperation.add(payOff);	
+		addOperationToHistory(bankHistoryOperation,payOff);
 	}
-	/**
-	 * operacja przelewu
-	 * @param amount kwota przelewu
-	 * @param numberAccount numerkonta
-	 * @param account konto z którego zostanie wykonany przelew
-	 */
+	//operacja przelewu
 	public void Transfer(double amount,String numberAccount,List<Operation> bankHistoryOperation)
 	{
 		Transfer transfer=new Transfer(amount,numberAccount,debit,balance);
 		balance=transfer.execute();
-		this.historyOfProduct.add(transfer);
-		bankHistoryOperation.add(transfer);	
+		addOperationToHistory(bankHistoryOperation,transfer);
 	}
-	/**
-	 * operacja naliczanie odsetek do konta bankowego
-	 * @param amount kwota przelewu
-	 * @param numberAccount numerkonta
-	 * @param account konto z którego zostanie wykonany przelew
-	 */
-	public void CalculateInterest(List<Operation> bankHistoryOperation)
-	{
-		 //doliczenie odsetek na podstawie mechanizmu
-		//this.historyOfProduct.add(transfer);
-		//bankHistoryOperation.add(transfer);	
-	}
-	/**
-	 * operacja zmiany mechanizmu odsetek
-	 * @param amount kwota przelewu
-	 * @param numberAccount numerkonta
-	 * @param account konto z którego zostanie wykonany przelew
-	 */
-	public void ChangeMechanismInterest(List<Operation> bankHistoryOperation)
-	{
-		 //operacja zmiany mechanizmu odsetek
-		//this.historyOfProduct.add(transfer);
-		//bankHistoryOperation.add(transfer);	
-	}
-	
-	/**
-	 * operacja stworzenia lokaty
-	 * @param amount kwota przelewu
-	 * @param numberAccount numerkonta
-	 * @param account konto z którego zostanie wykonany przelew
-	 */
-	public void createInvestment(List<Operation> bankHistoryOperation,double amount)
+	//operacja stworzenia lokaty
+	public void createNewInvestment(List<Operation> bankHistoryOperation,double amount)
 	{
 		 //operacja dodania nowej lokaty
 		//sprawdzic czy user ma wystarczaj¹co kasy na za³o¿enie lokaty
-		//rekaukulacja salda
-		Investment investment=new Investment(amount);
-		investments.add(investment);
-		//this.historyOfProduct.add(transfer);
-		//bankHistoryOperation.add(transfer);	
+		//rekalkulacja salda
+		Deposit deposit =new Deposit(amount,this);
+	    
+		investments.add(deposit.execute());
+		addOperationToHistory(bankHistoryOperation,deposit);
 	}
-	/**
-	 * operacja zerwania lokaty
-	 * @param amount kwota przelewu
-	 * @param numberAccount numerkonta
-	 * @param account konto z którego zostanie wykonany przelew
-	 */
-	public void createInvestment(List<Operation> bankHistoryOperation,Investment investment)
-	{
-		 //zerwij lokate zmien saldo
-		//this.historyOfProduct.add(transfer);
-		//bankHistoryOperation.add(transfer);	
-	}
-	//----------------------------------------------------------------
 	//operacja wziêcia kredytu
-	public void createNewCredit(double amount,List<Operation> bankHistoryOperation)
+	public void createNewCredit(List<Operation> bankHistoryOperation,double amount)
 	{
 		//klient bierze kredyt, dodawany jest do listy kredytów i zwiekszane jest saldo
-		Credit credit=new Credit(amount,this);
-		credits.add(credit);
-		//this.PayIn(amount, bankHistoryOperation);
+		TakeCredit takeCredit=new TakeCredit(this, amount);
+		takeCredit.execute();
+		this.PayIn(amount, bankHistoryOperation);
+		addOperationToHistory(bankHistoryOperation,takeCredit);
 	}
  
 }

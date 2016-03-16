@@ -23,39 +23,30 @@ public class Bank {
     {
     	clients=new ArrayList<Client>();
     	bankHistoryOperation=new ArrayList<Operation>();
+    	products=new ArrayList<Product>();
     }
 	public void addClient(Client client)
 	{
 		clients.add(client);
 	}
-	/*
-	 * @param amount kwota wp³aty
-	 * @param currentBalance aktualne saldo konta
-	 */
+ 
 	public void addAccount(Account account)
 	{
 		 //tutaj powinna byæ walidacja czy istnieje klient o idClient
 		//czy debet i balance jest wiêkszy od 0 jeœli nie to zg³oœ wyj¹tek
 		products.add(account);
 	}
-	
+	public Product getProduct(int id)
+	{
+		return products.get(id);
+	}
+ 
+	public List<Operation> getHistory()
+	{
+		return bankHistoryOperation;
+	}
 	 
 	
 	
-	
-	
-
-
-	/**
-	 * operacja utworzenia lokaty
-	 * @param amount 
-	 * @param account konto z którego bêd¹ pobrane pieni¹dze na lokate
-	 */
-	public void CreateInvestment(double amount,Account account)
-	{
-		
-		Deposit deposit=new Deposit(amount,account);
-	    deposit.execute();
-	    bankHistoryOperation.add(deposit);
-	}
+ 
 }

@@ -14,23 +14,19 @@ public class Deposit extends Operation {
 	private Account account;
    
 	//operacja utworzenia lokaty type=6
-    /**
-	 * @param amount kwota wp³aty
-	 * @param currentBalance aktualne saldo konta
-	 */
 	public Deposit(double amount,Account account) {
 	 
-		this.type=1;
+		this.type=6;
 		this.amount=amount;
 	    this.account=account;
-	     
+	    this.description="operacja utworzenia lokaty";
 	}
 	 
 	public Investment execute() {
 	 
 		Calendar cal = Calendar.getInstance();
 		this.date = cal.getTime();
-		Investment investment=new Investment(amount);
+		Investment investment=new Investment(amount, account);
 		return investment;
 	}
 

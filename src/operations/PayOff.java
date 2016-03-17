@@ -10,14 +10,14 @@ public class PayOff extends Operation {
 	private double amount;
 	private double currentBalance;//balance before operation
 	 private double maxdebit;
-	//wyp³ata type=2
+	//wypï¿½ata type=2
  
 	public PayOff(double amount,double currentBalance,double maxdebit) {
 	 
 		this.type=2;
 		this.amount=amount;
 		this.currentBalance=currentBalance;
-		this.description="operacja wyp³aty";
+		this.description="operacja wypï¿½aty";
 	}
  
 	public double execute() {

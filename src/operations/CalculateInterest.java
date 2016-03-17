@@ -24,11 +24,11 @@ public class CalculateInterest extends Operation {
 	     
 	}
 	 
-	public double execute() {
+	public Double execute() {
 	 
 		Calendar cal = Calendar.getInstance();
 		this.date = cal.getTime();
-		return currentBalance*mechanism.getPercentage();//coœ lepszego trzeba wymyœleæ
+		return currentBalance*mechanism.getPercentage();//coï¿½ lepszego trzeba wymyï¿½leï¿½
 	}
 
 }

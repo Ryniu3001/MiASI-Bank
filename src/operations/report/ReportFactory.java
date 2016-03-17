@@ -31,7 +31,7 @@ public class ReportFactory extends Operation {
 	 * @param reportType
 	 * @return
 	 */
-	public Report generateReport(String reportType) { // TODO: dodać pozostałe parametry filtrujące
+	public static Report generateReport(String reportType) { // TODO: dodać pozostałe parametry filtrujące
 		Report report = null;
 
 		switch (reportType) {

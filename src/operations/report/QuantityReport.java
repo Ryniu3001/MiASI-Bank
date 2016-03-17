@@ -27,7 +27,7 @@ public class QuantityReport implements Report {
 	}
 	
 	private void generate(){
-		List<Product> list = bank.getProducts();
+		this.list = bank.getProducts();
 	}
 
 	@Override

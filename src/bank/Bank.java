@@ -29,9 +29,10 @@ public class Bank {
     	return instance;
     }
     
-	public void addClient(Client client)
+	public int addClient(Client client)
 	{
 		clients.add(client);
+		return clients.size()-1;
 	}
  
 	public int addAccount(Account account)
@@ -54,6 +55,10 @@ public class Bank {
 
 	public List<Product> getProducts() {
 		return products;
+	}
+	
+	public Client getClient(int id){
+		return clients.get(id);
 	}
  
 }

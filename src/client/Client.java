@@ -10,11 +10,10 @@ public class Client {
 	private String surname;
 	private String id; // pesel
 	
-	public Client(String name,String surname,String id)
+	public Client(String name,String surname)
 	{
 		this.name=name;
 		this.surname=surname;
-		this.id=id;
 	 
 	}
 	

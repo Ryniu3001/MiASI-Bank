@@ -4,12 +4,13 @@ package product;
 import java.util.ArrayList;
 import java.util.List;
 
+import client.Client;
 import operations.Deposit;
 import operations.Operation;
 import operations.PayIn;
 import operations.PayOff;
-import operations.Transfer;
 import operations.TakeCredit;
+import operations.Transfer;
 
 public class Account extends Product {
 
@@ -21,12 +22,12 @@ public class Account extends Product {
 	
 	//mechanizm debetowy
 	private double debit;
-	private String clientId;
+	private Client clientId;
 	/**
 	 * @param balance saldo poczatkowe
 	 * @param debit maksymalna kwota debetu
 	*/
-	public Account(double balanceStart,double debit,String clientId) {
+	public Account(double balanceStart,double debit,Client clientId) {
 		super(balanceStart);
 		this.debit=debit;
 		this.clientId=clientId;

@@ -2,11 +2,14 @@ package operations;
 
 import java.util.Calendar;
 
+import product.Account;
+import product.Product;
+
  
 
 public class Transfer extends Operation {
 
-	private String numberAccount;
+	private Product destinationAccount;
 	private double amount;
 	private double currentBalance;
     private double maxdebit;
@@ -17,21 +20,29 @@ public class Transfer extends Operation {
 	 * @param maxdebit kwota maksymalnego debetu
 	 * @param currentBalance aktualne saldo konta
 	 */
-	public Transfer(double amount,String numberAccount,double maxdebit,double currentBalance) {
+	public Transfer(double amount,Product destinationAccount,double maxdebit,double currentBalance) {
 	 
 		this.type=3;
 		this.amount=amount;
-		this.numberAccount=numberAccount;
+		this.destinationAccount=destinationAccount;
 	    this.currentBalance=currentBalance;
 	    this.maxdebit=maxdebit;
 	    this.description="operacja przelewu";
 	}
 	 
-	public double execute() {
+	public Double execute() throws Exception{
 	 
 		Calendar cal = Calendar.getInstance();
 		this.date = cal.getTime();
-		return currentBalance-amount;
+		
+		if (currentBalance + maxdebit >= amount){
+			destinationAccount.setBalance(destinationAccount.getBalance() + amount);
+			return currentBalance-amount;
+		}else{
+			throw new Exception();
+		}
+		
+		
 		
 	}
 

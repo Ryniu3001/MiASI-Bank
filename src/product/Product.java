@@ -4,16 +4,17 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import bank.Bank;
 import client.InterestMechanism;
-import operations.Operation;
 import operations.CalculateInterest;
 import operations.ChangeMechanismInterest;
+import operations.Operation;
 
 public abstract class Product {
 
 	protected double balance;
     protected List<Operation> historyOfProduct;
-	private Date startDate;
+	protected Date startDate;
 	
 	private InterestMechanism interestMechanism;
 	 
@@ -27,7 +28,7 @@ public abstract class Product {
 		this.interestMechanism=new InterestMechanism(5,30);
 		
 	}
-	//œrodki(saldo) dla konta bankowego, œrodki na lokacie, œrodki(kwota) kredytu
+	//ï¿½rodki(saldo) dla konta bankowego, ï¿½rodki na lokacie, ï¿½rodki(kwota) kredytu
 	public double getBalance()
 	{
 		 return balance;	 
@@ -37,23 +38,22 @@ public abstract class Product {
 	{
 		CalculateInterest calculateInterest=new CalculateInterest(interestMechanism,balance);
 		balance=calculateInterest.execute();
-		addOperationToHistory(bankHistoryOperation,calculateInterest);
+		addOperationToHistory(calculateInterest);
 	}
 	//operacja zmiany mechanizmu odsetek
 	public void ChangeMechanismInterest(List<Operation> bankHistoryOperation,InterestMechanism newInterestMechanism)
 	{
 		ChangeMechanismInterest changeMechanismInterest=new ChangeMechanismInterest(newInterestMechanism);
 		interestMechanism= changeMechanismInterest.execute();
-		addOperationToHistory(bankHistoryOperation,changeMechanismInterest);
+		addOperationToHistory(changeMechanismInterest);
 	}
-	protected void addOperationToHistory(List<Operation> bankHistoryOperation,Operation operation)
+	protected void addOperationToHistory(Operation operation)
 	{
-		bankHistoryOperation.add(operation);
+		Bank.getInstance().getHistory().add(operation);
 		this.historyOfProduct.add(operation);
 	}
-	
-	
-
+	public void setBalance(double balance) {
+		this.balance = balance;
+	}
 		
-	
 }

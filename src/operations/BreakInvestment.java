@@ -11,7 +11,7 @@ public class BreakInvestment extends Operation {
 
 	
 	private Investment investment;
-   
+	private Account account;
 	 
     
 	public BreakInvestment(Account account) {
@@ -22,10 +22,12 @@ public class BreakInvestment extends Operation {
 	     
 	}
 	 
-	public void execute() {
+	public Boolean execute() {
 	 
 		Calendar cal = Calendar.getInstance();
 		this.date = cal.getTime();
+		account.setBalance(account.getBalance() + investment.getBalance());
+		return true;
 		 
 	}
 

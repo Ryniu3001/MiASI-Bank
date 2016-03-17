@@ -17,14 +17,14 @@ public class PayIn extends Operation {
 		this.type=1;
 		this.amount=amount;
 		this.currentBalance=currentBalance;
-		this.description="operacja wp�aty";
+		this.description="operacja wpłaty";
 	     
 	}
 	 
-	public double execute() {
+	public Double execute() {
 	 
 		Calendar cal = Calendar.getInstance();
-		this.date = cal.getTime();
+		this.date = cal.getTime();	
 		return currentBalance+amount;
 	}
 

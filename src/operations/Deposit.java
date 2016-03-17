@@ -12,9 +12,16 @@ public class Deposit extends Operation {
 	
 	private double amount;
 	private Account account;
+	private int months;
    
 	//operacja utworzenia lokaty type=6
-	public Deposit(double amount,Account account) {
+	/**
+	 * Utworzenie nowej lokaty
+	 * @param amount	saldo początkowe
+	 * @param account	konto źródłowe
+	 * @param months	czas w miesiącach
+	 */
+	public Deposit(double amount,Account account, int months) {
 	 
 		this.type=6;
 		this.amount=amount;
@@ -26,7 +33,8 @@ public class Deposit extends Operation {
 	 
 		Calendar cal = Calendar.getInstance();
 		this.date = cal.getTime();
-		Investment investment=new Investment(amount, account);
+		Investment investment=new Investment(amount, account, months);
+		account.setBalance(account.getBalance() - amount);
 		return investment;
 	}
 

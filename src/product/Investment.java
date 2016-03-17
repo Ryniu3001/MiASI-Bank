@@ -1,12 +1,12 @@
 package product;
 
  
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import operations.Operation;
 import operations.BreakInvestment;
-import product.Account;
+import operations.Operation;
 
 public class Investment extends Product {
 
@@ -15,16 +15,26 @@ public class Investment extends Product {
 	private Boolean isRefund;
 	private Account account;
 	private Date dateEnd;
-	public Investment(double balance,Account account) {
+	
+	public Investment(double balance,Account account, int months) {
 		super(balance);
 		this.account=account;
-		//ustawienie daty zakonczenia lokaty
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(this.startDate);
+		cal.add(Calendar.MONTH, months);
+		dateEnd = cal.getTime();
 		 
 	}
 	public void BreakInvestment(List<Operation> bankHistoryOperation)
 	{
+		//zwywamy lokate po uplynieciu czasu - naliczamy odsetki
+		//należałoby to jakoś zautomatyzować
+		if (Calendar.getInstance().getTime().after(dateEnd)){
+			this.balance += 0.1 * this.balance;
+		}
+		
 		BreakInvestment breakInvestment=new BreakInvestment(account);
-		breakInvestment.execute();
-		addOperationToHistory(bankHistoryOperation,breakInvestment);
+		isRefund = breakInvestment.execute();
+		addOperationToHistory(breakInvestment);
 	}
 }

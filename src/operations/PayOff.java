@@ -17,18 +17,20 @@ public class PayOff extends Operation {
 		this.type=2;
 		this.amount=amount;
 		this.currentBalance=currentBalance;
-		this.description="operacja wyp�aty";
+		this.maxdebit = maxdebit;
+		this.description="operacja wypłaty";
 	}
  
-	public double execute() {
+	public Double execute() throws Exception {
 	 
 		Calendar cal = Calendar.getInstance();
 		this.date = cal.getTime();
+		
 		if(currentBalance+maxdebit>=amount)
 			return currentBalance-amount;
 	 
 		else
-			return -1;
+			throw new Exception();	//TODO: Zastąpić swoim wyjątkiem
 			
 		
 	}

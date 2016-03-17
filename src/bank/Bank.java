@@ -5,19 +5,14 @@ import java.util.List;
 
 import client.Client;
 import operations.Operation;
-import operations.PayIn;
-import operations.PayOff;
-import operations.Transfer;
-import operations.Deposit;
 import product.Account;
-import product.Investment;
 import product.Product;
 
 public class Bank {
 
-	private List<Client> clients;
-    private List<Operation> bankHistoryOperation;
-    private List<Product> products;
+	private static List<Client> clients;
+    private static List<Operation> bankHistoryOperation;
+    private static List<Product> products;
     private static Bank instance = null;
     
     private Bank()
@@ -39,11 +34,13 @@ public class Bank {
 		clients.add(client);
 	}
  
-	public void addAccount(Account account)
+	public int addAccount(Account account)
 	{
 		 //tutaj powinna by� walidacja czy istnieje klient o idClient
 		//czy debet i balance jest wi�kszy od 0 je�li nie to zg�o� wyj�tek
 		products.add(account);
+		
+		return products.size()-1;
 	}
 	public Product getProduct(int id)
 	{

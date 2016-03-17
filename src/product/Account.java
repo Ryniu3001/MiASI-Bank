@@ -15,7 +15,7 @@ public class Account extends Product {
 
 	private List<Operation> historyOperation;
 	
-	//lokaty
+	//lokaty   //TODO: kredyt i lokaty ma konto czy klient?
 	private List<Investment> investments;
 	private List<Credit> credits;
 	
@@ -36,46 +36,88 @@ public class Account extends Product {
 	}
 	 
 	 
-	//operacja wp砤ty
-	public void PayIn(double amount,List<Operation> bankHistoryOperation)
+	
+	/**
+	 * Operacja wp艂aty
+	 * @param amount
+	 */
+	public void PayIn(double amount)
 	{
 		PayIn payIn=new PayIn(amount,balance);
 		balance=payIn.execute();
-		addOperationToHistory(bankHistoryOperation,payIn);	
 	}
-	//operacja wyp砤ty
-	public void PayOff(double amount,List<Operation> bankHistoryOperation)
+	
+	
+	/**
+	 * Operacja wyp艂aty
+	 * @param amount
+	 */
+	public void PayOff(double amount)
 	{
 		PayOff payOff=new PayOff(amount,balance,debit);
-		balance=payOff.execute();
-		addOperationToHistory(bankHistoryOperation,payOff);
+		
+		try {
+			balance=payOff.execute();
+		} catch (Exception e) {
+			System.out.println("Wyp艂ata: Za ma艂o 艣rodk贸w na koncie!");
+		}
+		addOperationToHistory(payOff);
 	}
-	//operacja przelewu
-	public void Transfer(double amount,String numberAccount,List<Operation> bankHistoryOperation)
+	
+	/**
+	 * Operacja przelewu
+	 * @param amount
+	 * @param destination
+	 */
+	public void Transfer(double amount,Account destination)
 	{
-		Transfer transfer=new Transfer(amount,numberAccount,debit,balance);
-		balance=transfer.execute();
-		addOperationToHistory(bankHistoryOperation,transfer);
+		Transfer transfer=new Transfer(amount,destination,debit,balance);
+		try {
+			balance=transfer.execute();
+		} catch (Exception e) {
+			System.out.println("Przelew: Za ma艂o 艣rodk贸w na koncie!");
+		}
+		addOperationToHistory(transfer);
 	}
-	//operacja stworzenia lokaty
+	
+	
+	/**
+	 * Operacja stworzenia lokaty
+	 * @param bankHistoryOperation
+	 * @param amount
+	 */
 	public void createNewInvestment(List<Operation> bankHistoryOperation,double amount)
 	{
-		 //operacja dodania nowej lokaty
-		//sprawdzic czy user ma wystarczaj筩o kasy na za硂縠nie lokaty
-		//rekalkulacja salda
-		Deposit deposit =new Deposit(amount,this);
-	    
-		investments.add(deposit.execute());
-		addOperationToHistory(bankHistoryOperation,deposit);
+		if (balance+debit >= amount){
+			Deposit deposit =new Deposit(amount,this, 1);
+			investments.add(deposit.execute());
+			addOperationToHistory(deposit);
+		}else{
+			System.out.println("Lokata: Niewystarczaj膮ca ilo艣膰 艣rodk贸w na koncie");
+		}
+		
 	}
-	//operacja wzi阠ia kredytu
-	public void createNewCredit(List<Operation> bankHistoryOperation,double amount)
+	
+	/**
+	 * Operacja wzi臋cia kredytu
+	 * @param bankHistoryOperation
+	 * @param amount
+	 */
+	public void createNewCredit(double amount)
 	{
-		//klient bierze kredyt, dodawany jest do listy kredyt體 i zwiekszane jest saldo
+		//klient bierze kredyt, dodawany jest do listy kredyt贸w i zwiekszane jest saldo
 		TakeCredit takeCredit=new TakeCredit(this, amount);
 		takeCredit.execute();
-		this.PayIn(amount, bankHistoryOperation);
-		addOperationToHistory(bankHistoryOperation,takeCredit);
+		this.PayIn(amount);
+		addOperationToHistory(takeCredit);
 	}
+
+
+
+	public double getDebit() {
+		return debit;
+	}
+	
+	
  
 }

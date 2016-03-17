@@ -31,8 +31,7 @@ public class ReportFactory extends Operation {
 	 * @param reportType
 	 * @return
 	 */
-	public Report generateReport(String reportType) { // TODO: dodać pozostałe
-														// parametry filtrujące
+	public Report generateReport(String reportType) { // TODO: dodać pozostałe parametry filtrujące
 		Report report = null;
 
 		switch (reportType) {
@@ -45,6 +44,12 @@ public class ReportFactory extends Operation {
 		}
 
 		return report;
+	}
+
+	@Override
+	public <T> T execute() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

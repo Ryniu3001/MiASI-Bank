@@ -41,8 +41,7 @@ public class Transfer extends Operation {
 		}else{
 			throw new Exception();
 		}
-		
-		
+			
 		
 	}
 

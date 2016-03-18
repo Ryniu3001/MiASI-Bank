@@ -45,7 +45,12 @@ public class Account extends Product {
 	public void PayIn(double amount)
 	{
 		PayIn payIn=new PayIn(amount,balance);
-		balance=payIn.execute();
+		try {
+			balance=payIn.execute();
+		} catch (Exception e) {
+			System.out.println("Wyjatek");
+		}
+		addOperationToHistory(payIn);
 	}
 	
 	

@@ -26,13 +26,12 @@ public class PayOff extends Operation {
 		Calendar cal = Calendar.getInstance();
 		this.date = cal.getTime();
 		
-		if(currentBalance+maxdebit>=amount)
+		if(amount > 0 && currentBalance+maxdebit>=amount)
 			return currentBalance-amount;
 	 
 		else
 			throw new Exception();	//TODO: Zastąpić swoim wyjątkiem
-			
-		
+					
 	}
 
 }

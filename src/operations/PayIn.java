@@ -21,11 +21,14 @@ public class PayIn extends Operation {
 	     
 	}
 	 
-	public Double execute() {
+	public Double execute() throws Exception {
 	 
 		Calendar cal = Calendar.getInstance();
 		this.date = cal.getTime();	
-		return currentBalance+amount;
+		if (amount <= 0)
+			throw new Exception();
+		else
+			return currentBalance+amount;
 	}
 
 }

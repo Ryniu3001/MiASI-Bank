@@ -17,7 +17,11 @@ public class Credit extends Product {
 		//sprawdzić czy account.balance wystarczy na spłate kredytu jesli tak pobierz z konta kase
 		if (account.getBalance() + account.getDebit() >= amount){
 			RefundCredit refundCredit=new RefundCredit(account,this, amount);
-			isRefund = refundCredit.execute();
+			try {
+				isRefund = refundCredit.execute();
+			} catch (Exception e) {
+				System.out.println("Kredyt nalezy splacic jedna rata");
+			}
 			addOperationToHistory(refundCredit);
 
 		}

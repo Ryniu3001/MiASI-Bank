@@ -42,7 +42,7 @@ public class Account extends Product {
 	 * Operacja wpłaty
 	 * @param amount
 	 */
-	public void PayIn(double amount)
+	public void payIn(double amount)
 	{
 		PayIn payIn=new PayIn(amount,balance);
 		try {
@@ -74,15 +74,14 @@ public class Account extends Product {
 	 * Operacja przelewu
 	 * @param amount
 	 * @param destination
+	 * @throws Exception 
 	 */
-	public void Transfer(double amount,Account destination)
+	public void Transfer(double amount,Account destination) throws Exception
 	{
-		Transfer transfer=new Transfer(amount,destination,debit,balance);
-		try {
-			balance=transfer.execute();
-		} catch (Exception e) {
-			System.out.println("Przelew: Za mało środków na koncie!");
-		}
+		Transfer transfer = new Transfer(this, amount,destination);
+
+		transfer.execute();
+
 		addOperationToHistory(transfer);
 	}
 	
@@ -96,7 +95,11 @@ public class Account extends Product {
 	{
 		if (balance+debit >= amount){
 			Deposit deposit =new Deposit(amount,this, 1);
-			investments.add(deposit.execute());
+			try {
+				investments.add(deposit.execute());
+			} catch (Exception e) {
+				System.out.println("Za malo srodkow na koncie");
+			}
 			addOperationToHistory(deposit);
 		}else{
 			System.out.println("Lokata: Niewystarczająca ilość środków na koncie");
@@ -114,7 +117,6 @@ public class Account extends Product {
 		//klient bierze kredyt, dodawany jest do listy kredytów i zwiekszane jest saldo
 		TakeCredit takeCredit=new TakeCredit(this, amount);
 		takeCredit.execute();
-		this.PayIn(amount);
 		addOperationToHistory(takeCredit);
 	}
 

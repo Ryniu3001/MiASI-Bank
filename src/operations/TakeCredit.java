@@ -30,7 +30,7 @@ public class TakeCredit extends Operation {
 	 
 		Calendar cal = Calendar.getInstance();
 		this.date = cal.getTime();
-		 
+		account.payIn(amount);
 		return new Credit(amount,account);
 	}
 

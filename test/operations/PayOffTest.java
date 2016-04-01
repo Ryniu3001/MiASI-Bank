@@ -6,7 +6,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-public class PayOfftest{
+public class PayOffTest{
 	static double initialBalance = 1000;
 	static double debit = 100;
 	static PayOff payoff;

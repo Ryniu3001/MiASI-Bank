@@ -14,11 +14,12 @@ public class BreakInvestment extends Operation {
 	private Account account;
 	 
     
-	public BreakInvestment(Account account) {
+	public BreakInvestment(Account account, Investment investment) {
 	 
 		this.type=7;
-		 
 		this.description="operacja zerwania lokaty";
+		this.account = account;
+		this.investment = investment;
 	     
 	}
 	 
@@ -26,7 +27,13 @@ public class BreakInvestment extends Operation {
 	 
 		Calendar cal = Calendar.getInstance();
 		this.date = cal.getTime();
-		account.setBalance(account.getBalance() + investment.getBalance());
+		//TODO: Nalezy zastosowac jakis mechanizm odstekowy i przypisac go do klasy Investment
+		if (this.date.before(investment.getDateEnd())){
+			account.payIn(investment.getBalance());
+		}else{
+			account.payIn(investment.getBalance() * 1.1);
+		}
+		investment.setBalance(0);
 		return true;
 		 
 	}

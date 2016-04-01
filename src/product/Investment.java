@@ -27,14 +27,16 @@ public class Investment extends Product {
 	}
 	public void BreakInvestment(List<Operation> bankHistoryOperation)
 	{
-		//zwywamy lokate po uplynieciu czasu - naliczamy odsetki
-		//należałoby to jakoś zautomatyzować
-		if (Calendar.getInstance().getTime().after(dateEnd)){
-			this.balance += 0.1 * this.balance;
-		}
-		
-		BreakInvestment breakInvestment=new BreakInvestment(account);
+		BreakInvestment breakInvestment=new BreakInvestment(account, this);
 		isRefund = breakInvestment.execute();
 		addOperationToHistory(breakInvestment);
 	}
+	public Boolean getIsRefund() {
+		return isRefund;
+	}
+	public Date getDateEnd() {
+		return dateEnd;
+	}
+	
+	
 }

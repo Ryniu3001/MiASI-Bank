@@ -26,16 +26,24 @@ public class Deposit extends Operation {
 		this.type=6;
 		this.amount=amount;
 	    this.account=account;
+	    this.months = months;
 	    this.description="operacja utworzenia lokaty";
 	}
 	 
-	public Investment execute() {
+	public Investment execute() throws Exception{
 	 
 		Calendar cal = Calendar.getInstance();
 		this.date = cal.getTime();
-		Investment investment=new Investment(amount, account, months);
-		account.setBalance(account.getBalance() - amount);
+		Investment investment = null;
+		if (account.getBalance()+account.getDebit() >= amount){
+			investment=new Investment(amount, account, months);
+			account.setBalance(account.getBalance() - amount);
+		}else{
+			throw new Exception();
+		}
 		return investment;
+
+
 	}
 
 }

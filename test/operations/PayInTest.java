@@ -3,7 +3,7 @@ package operations;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
-public class PayIntest {
+public class PayInTest {
 
 	@Test(expected=Exception.class)
 	public void payIn() throws Exception{

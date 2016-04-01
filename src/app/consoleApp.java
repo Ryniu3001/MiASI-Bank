@@ -16,6 +16,8 @@ public class consoleApp {
 		 * Informacje np. o kredycie aktualnie mamy w kalsie konta, a czy nie powinno to być w klasie Klienta? 
 		 * Klient moze miec kilka kont i moze chciec z innegoi splacic kredyt - to samo z lokatą
 		 * 
+		 * 
+		 * Referencja do kredytu powinna byc w kliencie
 		 */
 		
 		Bank bank= Bank.getInstance();
@@ -29,13 +31,18 @@ public class consoleApp {
 		Account account=(Account)bank.getProduct(accountIndex);
 		Account account2=(Account)bank.getProduct(accountIndex2);
 		
-		account.PayIn(10000);		
+		account.payIn(10000);		
 		System.out.println("Bilans1: " + account.getBalance());
 		
 		account.PayOff(5000);		
 		System.out.println("Bilans1: " + account.getBalance());
 		
-		account2.Transfer(5000, account);
+		try {
+			account2.Transfer(5000, account);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		account.createNewCredit(50000);
 		System.out.println("Bilans1: " + account.getBalance());

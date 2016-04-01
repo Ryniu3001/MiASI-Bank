@@ -25,14 +25,14 @@ public class RefundCredit extends Operation {
 	     
 	}
 	 
-	public Boolean execute() {
+	public Boolean execute() throws Exception {
 	 
 		Calendar cal = Calendar.getInstance();
 		this.date = cal.getTime();	
 		
-		if (credit.getBalance() - amount >= 0){
-			credit.setBalance(credit.getBalance() - amount);
-			account.setBalance(account.getBalance() - amount);
+		//TODO: Jak ktos splaci wiecej niz pobral to trzeba zwrocic mu na konto roznice
+		if (credit.getBalance() - amount > 0){
+			throw new Exception();
 		}else{
 			account.setBalance(account.getBalance() - credit.getBalance());
 			credit.setBalance(0);

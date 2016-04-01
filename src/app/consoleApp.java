@@ -49,7 +49,7 @@ public class consoleApp {
 		
 		Report r = ReportFactory.generateReport(ReportFactory.QUANTITY_REPORT);
 		System.out.println(r.printOutResult());
-		//System.out.println(Bank.getInstance().getHistory());
+		System.out.println(Bank.getInstance().getHistory());
 		
 	 
 		 

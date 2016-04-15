@@ -2,7 +2,7 @@ package operations;
 
 import java.util.Calendar;
 
-import client.InterestMechanism;
+import interests.InterestMechanism;
 
 public class ChangeMechanismInterest extends Operation {
 
@@ -19,11 +19,11 @@ public class ChangeMechanismInterest extends Operation {
 	     
 	}
 	 
-	public InterestMechanism execute() {
+	public Void execute() {
 	 
 		Calendar cal = Calendar.getInstance();
 		this.date = cal.getTime();
-		return mechanismNew;
+		return null;
 	}
 
 }

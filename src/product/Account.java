@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import client.Client;
+import interests.FirstInterestForAccount;
 import operations.Deposit;
 import operations.Operation;
 import operations.PayIn;
@@ -34,6 +35,7 @@ public class Account extends Product {
 		this.investments=new ArrayList<Investment>();
 		this.credits=new ArrayList<Credit>();
 		this.historyOperation=new ArrayList<Operation>();
+		this.interestMechanism = new FirstInterestForAccount(this);
 	}
 	 
 	 

@@ -2,33 +2,28 @@ package operations;
 
 import java.util.Calendar;
 
-import client.InterestMechanism;
+import interests.InterestMechanism;
+import product.Product;
 
  
 
-public class CalculateInterest extends Operation {
-
-	
-	 
-	private double currentBalance;//balance before operation
-	private InterestMechanism mechanism;
-   
+public class CalculateInterest extends Operation {  
 	//naliczanie odsetek type=4
      
-	public CalculateInterest(InterestMechanism mechanism,double currentbalance) {
+	private InterestMechanism mechanisms;
+	public CalculateInterest(InterestMechanism mechanism) {
 	 
 		this.type=4;
-		this.description="operacja naliczania odsetek";
-		this.currentBalance=currentBalance; 
-		this.mechanism=mechanism;
-	     
+		this.description="operacja naliczania odsetek";    
+		this.mechanisms = mechanism;
 	}
 	 
-	public Double execute() {
-	 
+	public Void execute() {
 		Calendar cal = Calendar.getInstance();
 		this.date = cal.getTime();
-		return currentBalance*mechanism.getPercentage();//co� lepszego trzeba wymy�le�
+		mechanisms.calculate();
+		return null;
+		
 	}
 
 }

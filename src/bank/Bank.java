@@ -60,5 +60,4 @@ public class Bank {
 	public Client getClient(int id){
 		return clients.get(id);
 	}
- 
 }

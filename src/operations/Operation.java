@@ -1,8 +1,6 @@
 package operations;
 import java.util.Date;
 
-import product.Product;
-
 public abstract class Operation {
 
 	protected int type;

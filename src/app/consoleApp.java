@@ -18,6 +18,13 @@ public class consoleApp {
 		 * 
 		 * 
 		 * Referencja do kredytu powinna byc w kliencie
+		 * 
+		 * 
+		 * W klasie abstrakcyjnej Operation dodać pole Product i zmienić jej podklasy tak aby to pole uzupełniały, aby w historii banku było można wyświetlić jakiego 
+		 * konta/produktu dotyczy operacja.
+		 * Opcjonalnie: flaga zabezpieczająca przed ponownym wykonaniem instancji operacji
+		 * 
+		 * Obliczenie odsetek ma nie powodowac zmiany stanu (InterestMechanizm) tylko zwracac wartosc, a dopiero operacja CalculateInterest ma dodawac do stnau konta
 		 */
 		
 		Bank bank= Bank.getInstance();
@@ -36,6 +43,9 @@ public class consoleApp {
 		
 		account.PayOff(5000);		
 		System.out.println("Bilans1: " + account.getBalance());
+		
+		account.CalculateInterest();
+		System.out.println("Bilans2: " + account.getBalance());
 		
 		try {
 			account2.Transfer(5000, account);

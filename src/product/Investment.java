@@ -5,6 +5,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import interests.FirstInterestForInvestment;
 import operations.BreakInvestment;
 import operations.Operation;
 
@@ -23,6 +24,7 @@ public class Investment extends Product {
 		cal.setTime(this.startDate);
 		cal.add(Calendar.MONTH, months);
 		dateEnd = cal.getTime();
+		this.interestMechanism = new FirstInterestForInvestment(this);
 		 
 	}
 	public void BreakInvestment(List<Operation> bankHistoryOperation)

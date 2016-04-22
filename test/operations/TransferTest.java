@@ -15,8 +15,8 @@ public class TransferTest {
 	public void setUp(){
 		Client client = new Client("Asd", "qwe");
 		Client client2 = new Client("qwe", "sdf");
-		account = new Account(100, 100, client);
-		account2 = new Account(1000, 0, client2);
+		account = new Account(100, client);
+		account2 = new Account(1000, client2);
 		
 	}
 

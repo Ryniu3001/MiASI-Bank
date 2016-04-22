@@ -35,7 +35,7 @@ public class Deposit extends Operation {
 		Calendar cal = Calendar.getInstance();
 		this.date = cal.getTime();
 		Investment investment = null;
-		if (account.getBalance()+account.getDebit() >= amount){
+		if (account.getBalance() >= amount){
 			investment=new Investment(amount, account, months);
 			account.setBalance(account.getBalance() - amount);
 		}else{

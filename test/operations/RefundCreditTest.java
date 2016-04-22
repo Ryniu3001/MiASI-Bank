@@ -16,7 +16,7 @@ public class RefundCreditTest {
 	@Before
 	public void setUp(){
 		Client client = new Client("Asd", "qwe");
-		account = new Account(1000, 100, client);
+		account = new Account(1000, client);
 		credit = new Credit(50000, account);		
 	}
 	

@@ -18,7 +18,7 @@ public class PayOffTest{
     @Test
     public void payOff1() throws Exception {
     	double amount = 1000;
-    	payoff = new PayOff(amount, initialBalance, debit);
+    	payoff = new PayOff(amount, initialBalance);
 
 		assertEquals(initialBalance-amount, payoff.execute(), 0);
     }
@@ -26,7 +26,7 @@ public class PayOffTest{
     @Test
     public void payOff2() throws Exception {
     	double amount = -1000;
-    	payoff = new PayOff(amount, initialBalance, debit);
+    	payoff = new PayOff(amount, initialBalance);
     	exception.expect(Exception.class);    	
     	payoff.execute();
     }
@@ -34,7 +34,7 @@ public class PayOffTest{
     @Test
     public void payOff3() throws Exception {
     	double amount = 1101.45;
-    	payoff = new PayOff(amount, initialBalance, debit);
+    	payoff = new PayOff(amount, initialBalance);
     	exception.expect(Exception.class);    	
     	payoff.execute();
     }
@@ -42,7 +42,7 @@ public class PayOffTest{
     @Test
     public void payOff4() throws Exception {
     	double amount = 0;
-    	payoff = new PayOff(amount, initialBalance, debit);
+    	payoff = new PayOff(amount, initialBalance);
     	exception.expect(Exception.class);    	
     	payoff.execute();
     }

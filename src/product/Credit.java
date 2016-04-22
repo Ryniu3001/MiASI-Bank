@@ -17,7 +17,7 @@ public class Credit extends Product {
 	public void refundCredit(double amount)
 	{
 		//sprawdzić czy account.balance wystarczy na spłate kredytu jesli tak pobierz z konta kase
-		if (account.getBalance() + account.getDebit() >= amount){
+		if (account.getBalance() >= amount){
 			RefundCredit refundCredit=new RefundCredit(account,this, amount);
 			try {
 				isRefund = refundCredit.execute();

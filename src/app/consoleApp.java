@@ -31,8 +31,8 @@ public class consoleApp {
 	 
 		int id = bank.addClient(new Client("Zenek","Kowalski"));
 		Client client = Bank.getInstance().getClient(id);
-		int accountIndex = bank.addAccount(new Account(0,1000, client));
-		int accountIndex2 = bank.addAccount(new Account(5000,1000, client));
+		int accountIndex = bank.addAccount(new Account(0, client));
+		int accountIndex2 = bank.addAccount(new Account(5000, client));
 		
 	 
 		Account account=(Account)bank.getProduct(accountIndex);

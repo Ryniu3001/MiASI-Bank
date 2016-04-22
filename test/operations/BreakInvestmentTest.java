@@ -16,7 +16,7 @@ public class BreakInvestmentTest {
 	@Before
 	public void setUp(){
 		Client client = new Client("Asd", "qwe");
-		account = new Account(500, 0, client);		
+		account = new Account(500, client);		
 		investment = new Investment(20000, account, 1);
 	}
 	

@@ -21,16 +21,13 @@ public class Account extends Product {
 	private List<Investment> investments;
 	private List<Credit> credits;
 	
-	//mechanizm debetowy
-	private double debit;
 	private Client clientId;
 	/**
 	 * @param balance saldo poczatkowe
 	 * @param debit maksymalna kwota debetu
 	*/
-	public Account(double balanceStart,double debit,Client clientId) {
+	public Account(double balanceStart,Client clientId) {
 		super(balanceStart);
-		this.debit=debit;
 		this.clientId=clientId;
 		this.investments=new ArrayList<Investment>();
 		this.credits=new ArrayList<Credit>();
@@ -62,7 +59,7 @@ public class Account extends Product {
 	 */
 	public void PayOff(double amount)
 	{
-		PayOff payOff=new PayOff(amount,balance,debit);
+		PayOff payOff=new PayOff(amount,balance);
 		
 		try {
 			balance=payOff.execute();
@@ -95,7 +92,7 @@ public class Account extends Product {
 	 */
 	public void createNewInvestment(List<Operation> bankHistoryOperation,double amount)
 	{
-		if (balance+debit >= amount){
+		if (balance >= amount){
 			Deposit deposit =new Deposit(amount,this, 1);
 			try {
 				investments.add(deposit.execute());
@@ -122,12 +119,5 @@ public class Account extends Product {
 		addOperationToHistory(takeCredit);
 	}
 
-
-
-	public double getDebit() {
-		return debit;
-	}
-	
-	
  
 }

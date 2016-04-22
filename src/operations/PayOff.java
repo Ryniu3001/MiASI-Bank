@@ -9,15 +9,13 @@ public class PayOff extends Operation {
 	
 	private double amount;
 	private double currentBalance;//balance before operation
-	 private double maxdebit;
 	//wyp�ata type=2
  
-	public PayOff(double amount,double currentBalance,double maxdebit) {
+	public PayOff(double amount,double currentBalance) {
 	 
 		this.type=2;
 		this.amount=amount;
 		this.currentBalance=currentBalance;
-		this.maxdebit = maxdebit;
 		this.description="operacja wypłaty";
 	}
  
@@ -26,7 +24,7 @@ public class PayOff extends Operation {
 		Calendar cal = Calendar.getInstance();
 		this.date = cal.getTime();
 		
-		if(amount > 0 && currentBalance+maxdebit>=amount)
+		if(amount > 0 && currentBalance>=amount)
 			return currentBalance-amount;
 	 
 		else

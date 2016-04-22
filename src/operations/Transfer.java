@@ -35,7 +35,7 @@ public class Transfer extends Operation {
 		Calendar cal = Calendar.getInstance();
 		this.date = cal.getTime();
 		
-		if (sourceAccount.getBalance() + sourceAccount.getDebit() >= amount){
+		if (sourceAccount.getBalance() >= amount){
 			destinationAccount.setBalance(destinationAccount.getBalance() + amount);
 			sourceAccount.setBalance(sourceAccount.getBalance()- amount); 
 		}else{

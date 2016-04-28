@@ -2,33 +2,26 @@ package operations;
 
 import java.util.Calendar;
 
+import product.Account;
+
  
 
 public class PayIn extends Operation {
 
 	
 	private double amount;
-	private double currentBalance;//balance before operation
-   
-	//wp�ata type=1
+	private Account to;
     
-	public PayIn(double amount,double currentBalance) {
+	public PayIn(Account to,double amount) {
 	 
-		this.type=1;
+		this.to=to;
 		this.amount=amount;
-		this.currentBalance=currentBalance;
-		this.description="operacja wpłaty";
 	     
 	}
 	 
-	public Double execute() throws Exception {
+	public void execute() throws Exception {
 	 
-		Calendar cal = Calendar.getInstance();
-		this.date = cal.getTime();	
-		if (amount <= 0)
-			throw new Exception();
-		else
-			return currentBalance+amount;
+		 to.addBalance(amount);
 	}
 
 }

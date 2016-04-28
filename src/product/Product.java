@@ -16,7 +16,7 @@ public abstract class Product {
 	protected double balance;
 	protected List<Operation> historyOfProduct;
 	protected Date startDate;
-
+    protected Boolean isOpen;
 	protected InterestMechanism interestMechanism;
 
 	// odsetki,saldo
@@ -26,34 +26,21 @@ public abstract class Product {
 		Calendar cal = Calendar.getInstance();
 		this.startDate = cal.getTime();
 		this.historyOfProduct = new ArrayList<Operation>();
+		this.isOpen=true;
 
 	}
 
-	// �rodki(saldo) dla konta bankowego, �rodki na lokacie, �rodki(kwota)
-	// kredytu
+	 
 	public double getBalance() {
 		return balance;
 	}
-
-	// operacja naliczenia odsetek
-	public void CalculateInterest() {
-		CalculateInterest calculateInterest = new CalculateInterest(this.getInterestMechanism());
-		calculateInterest.execute();
-		addOperationToHistory(calculateInterest);
+	public void closeProduct()
+	{
+		isOpen=false;
 	}
-
-	// operacja zmiany mechanizmu odsetek
-	public void ChangeMechanismInterest(InterestMechanism newInterestMechanism) {
-		ChangeMechanismInterest changeMechanismInterest = new ChangeMechanismInterest(newInterestMechanism);
-		changeMechanismInterest.execute();
-		addOperationToHistory(changeMechanismInterest);
+	public Boolean getIsOpen() {
+		return isOpen;
 	}
-
-	protected void addOperationToHistory(Operation operation) {
-		Bank.getInstance().getHistory().add(operation);
-		this.historyOfProduct.add(operation);
-	}
-
 	public void setBalance(double balance) {
 		this.balance = balance;
 	}
@@ -61,9 +48,16 @@ public abstract class Product {
 	public InterestMechanism getInterestMechanism() {
 		return interestMechanism;
 	}
-
 	public void setInterestMechanism(InterestMechanism interestMechanism) {
 		this.interestMechanism = interestMechanism;
+	}
+	
+	//////////////////
+	
+	public void executeOperation(Operation operation) throws Exception
+	{
+		operation.execute();
+		historyOfProduct.add(operation);
 	}
 
 }

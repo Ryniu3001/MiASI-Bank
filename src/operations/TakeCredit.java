@@ -12,26 +12,21 @@ public class TakeCredit extends Operation {
 
 	
 	 
-	private Account account;
-	private double amount;
-   
-	//zaciagniecie kredytu
-    
-	public TakeCredit(Account account,double amount) {
+	private Credit credit;
 	 
-		this.type=8;
-		this.account=account;
-		this.amount=amount;
-		this.description="operacja zaciagniecia kredytu";
+    
+	public TakeCredit(Credit credit) {
+	 
+		 credit=credit;
 	     
 	}
 	 
-	public Credit execute() {
+	public void execute() {
+		
+		 
+		this.credit.getAccount().addBalance(credit.getBalance());
 	 
-		Calendar cal = Calendar.getInstance();
-		this.date = cal.getTime();
-		account.payIn(amount);
-		return new Credit(amount,account);
+		 
 	}
 
 }

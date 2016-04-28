@@ -1,6 +1,5 @@
 package operations;
 
-import java.util.Calendar;
 
 import product.Account;
 
@@ -8,42 +7,22 @@ import product.Account;
 
 public class Transfer extends Operation {
 
-	private Account destinationAccount;
-	private Account sourceAccount;
-	private double amount;
+	private Account from;
+	private Account to;
+    private double amount;
 
-	//przelew type=3
-    /**
-	 * @param amount kwota przelewu
-	 * @param numberAccount nr konta do przelewu
-	 * @param maxdebit kwota maksymalnego debetu
-	 * @param currentBalance aktualne saldo konta
-	 */
-	public Transfer(Account sourceAccount, double amount,Account destinationAccount) {
+ 
+	public Transfer(Account toAccount,Account fromAccount,double amount) {
 	 
-		this.type=3;
-		this.amount=amount;
-		this.destinationAccount=destinationAccount;
-		this.sourceAccount = sourceAccount;
-	   // this.currentBalance=currentBalance;
-	    //this.maxdebit=maxdebit;
-	    this.description="operacja przelewu";
+		this.to=toAccount;
+		this.from=toAccount;
+		 this.amount=amount;
 	}
 	 
-	public Void execute() throws Exception{
+	public void execute() throws Exception{
 	 
-		Calendar cal = Calendar.getInstance();
-		this.date = cal.getTime();
-		
-		if (sourceAccount.getBalance() >= amount){
-			destinationAccount.setBalance(destinationAccount.getBalance() + amount);
-			sourceAccount.setBalance(sourceAccount.getBalance()- amount); 
-		}else{
-			throw new Exception();
-		}
-		
-		return null;
-			
+		to.addBalance(amount);
+		from.substractBalance(amount);
 		
 	}
 

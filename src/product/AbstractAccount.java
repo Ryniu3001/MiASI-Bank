@@ -5,7 +5,7 @@ import java.util.List;
 
 import client.Client;
 import interests.FirstInterestForAccount;
-import operations.Deposit;
+import operations.CreateInvestment;
 import operations.Operation;
 import operations.PayIn;
 import operations.PayOff;
@@ -18,39 +18,12 @@ public abstract class AbstractAccount extends Product {
 		super(balance);
 	}
 
-	/**
-	 * Operacja wpłaty
-	 * @param amount
-	 */
-	public abstract void payIn(double amount);
-	
-	/**
-	 * Operacja wypłaty
-	 * @param amount
-	 */
-	public abstract void PayOff(double amount);
-	/**
-	 * Operacja przelewu
-	 * @param amount
-	 * @param destination
-	 * @throws Exception 
-	 */
-	public abstract void Transfer(double amount,Account destination) throws Exception;
-	
-	
-	/**
-	 * Operacja stworzenia lokaty
-	 * @param bankHistoryOperation
-	 * @param amount
-	 */
-	public abstract void createNewInvestment(List<Operation> bankHistoryOperation,double amount);
-	
-	/**
-	 * Operacja wzięcia kredytu
-	 * @param bankHistoryOperation
-	 * @param amount
-	 */
-	public abstract void createNewCredit(double amount);
+	public void execute(Operation operation) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
+	 
 	
 	
 }

@@ -3,27 +3,23 @@ package operations;
 import java.util.Calendar;
 
 import interests.InterestMechanism;
+import product.Product;
 
 public class ChangeMechanismInterest extends Operation {
 
 	 
- 
-	private InterestMechanism mechanismNew;
+    private Product product;
+	private InterestMechanism interestMechanismNew;
   	 
-	public ChangeMechanismInterest(InterestMechanism mechanismNew) {
+	public ChangeMechanismInterest(Product product,InterestMechanism mechanismNew) {
 	 
-		this.type=5;
-		this.description="operacja zmiany mechanizmu";
-
-		this.mechanismNew=mechanismNew;
+		this.product=product;
+		this.interestMechanismNew=mechanismNew;
 	     
 	}
 	 
-	public Void execute() {
-	 
-		Calendar cal = Calendar.getInstance();
-		this.date = cal.getTime();
-		return null;
+	public void execute() {
+	  product.setInterestMechanism(interestMechanismNew);
 	}
 
 }

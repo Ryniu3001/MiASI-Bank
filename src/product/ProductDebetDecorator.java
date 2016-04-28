@@ -13,31 +13,8 @@ public class ProductDebetDecorator extends AbstractAccount {
 	}
 
 	@Override
-	public void payIn(double amount) {
-		this.account.payIn(amount);
-	}
-
-	@Override
-	public void PayOff(double amount) {
-		this.account.PayOff(amount);
-	}
-
-	@Override
-	public void Transfer(double amount, Account destination) throws Exception {
-		this.account.Transfer(amount, destination);
-		
-	}
-
-	@Override
-	public void createNewInvestment(List<Operation> bankHistoryOperation, double amount) {
-		this.account.createNewInvestment(bankHistoryOperation, amount);
-		
-	}
-
-	@Override
-	public void createNewCredit(double amount) {
-		this.account.createNewCredit(amount);
-		
+	public void execute(Operation operation) throws Exception {
+		this.account.executeOperation(operation);
 	}
 
 }

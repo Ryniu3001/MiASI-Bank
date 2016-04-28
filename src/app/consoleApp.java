@@ -3,7 +3,7 @@ package app;
 import bank.Bank;
 import client.Client;
 import operations.report.Report;
-import operations.report.ReportFactory;
+//import operations.report.ReportFactory;
 import product.Account;
 
 public class consoleApp {
@@ -29,39 +29,39 @@ public class consoleApp {
 		
 		Bank bank= Bank.getInstance();
 	 
-		int id = bank.addClient(new Client("Zenek","Kowalski"));
-		Client client = Bank.getInstance().getClient(id);
-		int accountIndex = bank.addAccount(new Account(0, client));
-		int accountIndex2 = bank.addAccount(new Account(5000, client));
-		
-	 
-		Account account=(Account)bank.getProduct(accountIndex);
-		Account account2=(Account)bank.getProduct(accountIndex2);
-		
-		account.payIn(10000);		
-		System.out.println("Bilans1: " + account.getBalance());
-		
-		account.PayOff(5000);		
-		System.out.println("Bilans1: " + account.getBalance());
-		
-		account.CalculateInterest();
-		System.out.println("Bilans2: " + account.getBalance());
-		
-		try {
-			account2.Transfer(5000, account);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		account.createNewCredit(50000);
-		System.out.println("Bilans1: " + account.getBalance());
-		
-		Report r = ReportFactory.generateReport(ReportFactory.QUANTITY_REPORT);
-		System.out.println(r.printOutResult());
-		System.out.println(Bank.getInstance().getHistory());
-		
-	 
+//		int id = bank.addClient(new Client("Zenek","Kowalski"));
+//		Client client = Bank.getInstance().getClient(id);
+//		int accountIndex = bank.addAccount(new Account(0, client));
+//		int accountIndex2 = bank.addAccount(new Account(5000, client));
+//		
+//	 
+//		Account account=(Account)bank.getProduct(accountIndex);
+//		Account account2=(Account)bank.getProduct(accountIndex2);
+//		
+//		account.payIn(10000);		
+//		System.out.println("Bilans1: " + account.getBalance());
+//		
+//		account.PayOff(5000);		
+//		System.out.println("Bilans1: " + account.getBalance());
+//		
+//		account.CalculateInterest();
+//		System.out.println("Bilans2: " + account.getBalance());
+//		
+//		try {
+//			account2.Transfer(5000, account);
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		
+//		account.createNewCredit(50000);
+//		System.out.println("Bilans1: " + account.getBalance());
+//		
+//		Report r = ReportFactory.generateReport(ReportFactory.QUANTITY_REPORT);
+//		System.out.println(r.printOutResult());
+//		System.out.println(Bank.getInstance().getHistory());
+//		
+//	 
 		 
 		 
  

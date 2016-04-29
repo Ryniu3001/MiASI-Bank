@@ -3,6 +3,7 @@ package product;
 import java.util.List;
 
 import operations.Operation;
+import operations.report.Visitor;
 
 public class ProductDebetDecorator extends AbstractAccount {
 	private Account account;
@@ -15,6 +16,12 @@ public class ProductDebetDecorator extends AbstractAccount {
 	@Override
 	public void execute(Operation operation) throws Exception {
 		this.account.executeOperation(operation);
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
 	}
 
 }

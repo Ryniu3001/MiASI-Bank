@@ -2,6 +2,7 @@ package product;
 
 import interests.FirstInterestForCredit;
 import operations.RefundCredit;
+import operations.report.Visitor;
 
 public class Credit extends Product {
 
@@ -16,5 +17,9 @@ public class Credit extends Product {
 	public Account getAccount()
 	{
 		return account;
+	}
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);		
 	}
 }

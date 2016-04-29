@@ -8,6 +8,7 @@ import java.util.List;
 import interests.FirstInterestForInvestment;
 import operations.BreakInvestment;
 import operations.Operation;
+import operations.report.Visitor;
 
 public class Investment extends Product {
 
@@ -36,6 +37,13 @@ public class Investment extends Product {
 	public Account getAccount()
 	{
 		return account;
+	}
+
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
 	}
 	
 }

@@ -10,13 +10,14 @@ import interests.InterestMechanism;
 import operations.CalculateInterest;
 import operations.ChangeMechanismInterest;
 import operations.Operation;
+import operations.report.Visitable;
 
-public abstract class Product {
+public abstract class Product implements Visitable {
 
 	protected double balance;
 	protected List<Operation> historyOfProduct;
 	protected Date startDate;
-    protected Boolean isOpen;
+	protected Boolean isOpen;
 	protected InterestMechanism interestMechanism;
 
 	// odsetki,saldo
@@ -26,21 +27,22 @@ public abstract class Product {
 		Calendar cal = Calendar.getInstance();
 		this.startDate = cal.getTime();
 		this.historyOfProduct = new ArrayList<Operation>();
-		this.isOpen=true;
+		this.isOpen = true;
 
 	}
 
-	 
 	public double getBalance() {
 		return balance;
 	}
-	public void closeProduct()
-	{
-		isOpen=false;
+
+	public void closeProduct() {
+		isOpen = false;
 	}
+
 	public Boolean getIsOpen() {
 		return isOpen;
 	}
+
 	public void setBalance(double balance) {
 		this.balance = balance;
 	}
@@ -48,14 +50,14 @@ public abstract class Product {
 	public InterestMechanism getInterestMechanism() {
 		return interestMechanism;
 	}
+
 	public void setInterestMechanism(InterestMechanism interestMechanism) {
 		this.interestMechanism = interestMechanism;
 	}
-	
+
 	//////////////////
-	
-	public void executeOperation(Operation operation) throws Exception
-	{
+
+	public void executeOperation(Operation operation) throws Exception {
 		operation.execute();
 		historyOfProduct.add(operation);
 	}

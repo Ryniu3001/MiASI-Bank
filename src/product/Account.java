@@ -43,7 +43,11 @@ public class Account extends Product {
 	}
 
 	public void substractBalance(double amount) {
-		this.balance -= amount;
+        if(balance >= amount) {
+            balance -= amount;
+        } else {
+            throw new RuntimeException("Too small balance");
+        }
 	}
 
 	@Override

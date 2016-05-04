@@ -1,8 +1,7 @@
 package product;
 
 import interests.FirstInterestForCredit;
-import operations.RefundCredit;
-import operations.report.Visitor;
+import report.Visitor;
 
 public class Credit extends Product {
 

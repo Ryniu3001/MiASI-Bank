@@ -5,12 +5,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import bank.Bank;
 import interests.InterestMechanism;
-import operations.CalculateInterest;
-import operations.ChangeMechanismInterest;
 import operations.Operation;
-import operations.report.Visitable;
+import report.Visitable;
 
 public abstract class Product implements Visitable {
 

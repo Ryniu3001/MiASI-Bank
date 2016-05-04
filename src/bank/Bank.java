@@ -15,7 +15,7 @@ import operations.PayOff;
 import operations.RefundCredit;
 import operations.TakeCredit;
 import operations.Transfer;
-import operations.report.AccountReport;
+import report.AccountReport;
 import product.Account;
 import product.Credit;
 import product.Investment;

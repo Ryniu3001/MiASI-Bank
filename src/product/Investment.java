@@ -3,12 +3,9 @@ package product;
  
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 
 import interests.FirstInterestForInvestment;
-import operations.BreakInvestment;
-import operations.Operation;
-import operations.report.Visitor;
+import report.Visitor;
 
 public class Investment extends Product {
 

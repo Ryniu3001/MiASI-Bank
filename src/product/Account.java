@@ -6,7 +6,7 @@ import java.util.List;
 import client.Client;
 import interests.FirstInterestForAccount;
 import operations.Operation;
-import operations.report.Visitor;
+import report.Visitor;
 
 public class Account extends Product {
 

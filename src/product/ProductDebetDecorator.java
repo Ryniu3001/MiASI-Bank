@@ -1,9 +1,7 @@
 package product;
 
-import java.util.List;
-
 import operations.Operation;
-import operations.report.Visitor;
+import report.Visitor;
 
 public class ProductDebetDecorator extends AbstractAccount {
 	private Account account;

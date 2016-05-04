@@ -7,8 +7,7 @@ import product.Account;
 import product.Credit;
 import product.Investment;
 import product.Product;
-import report.AccountBalanceReport;
-import report.AccountsSumBalanceReport;
+import report.Visitor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -121,15 +120,9 @@ public class Bank {
         credit.executeOperation(operation);
     }
 
-    public void accountReport(AccountBalanceReport accountReport) {
+    public void accountReport(Visitor report) {
         for (Product product : products) {
-            product.accept(accountReport);
-        }
-    }
-
-    public void accountReport(AccountsSumBalanceReport accountReport) {
-        for (Product product : products) {
-            product.accept(accountReport);
+            product.accept(report);
         }
     }
 }

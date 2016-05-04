@@ -2,16 +2,14 @@ package app;
 
 import bank.Bank;
 import client.Client;
-//import operations.report.ReportFactory;
 import product.Account;
+import report.AccountsSumBalanceReport;
 
 public class consoleApp {
-	
-	public static void main(String[] args)
-	{
-		
+    public static void main(String[] args) {
+
 		/*
-		 * Wydaje mi się że dodawanie do historii banku powinno być realizowane w klasie Operacji.
+         * Wydaje mi się że dodawanie do historii banku powinno być realizowane w klasie Operacji.
 		 * Informacje np. o kredycie aktualnie mamy w kalsie konta, a czy nie powinno to być w klasie Klienta? 
 		 * Klient moze miec kilka kont i moze chciec z innegoi splacic kredyt - to samo z lokatą
 		 * 
@@ -29,23 +27,21 @@ public class consoleApp {
 		 * 
 		 * Mediator - przelewy do innych bankow. Np jakas klasa KRS - jako mediator.
 		 */
-		
-		Bank bank= Bank.getInstance();
-	 
-		int id = bank.addClient(new Client("Zenek","Kowalski"));
-		Client client = Bank.getInstance().getClient(id);
-		int accountIndex = bank.addAccount(new Account(0, client));
-		int accountIndex2 = bank.addAccount(new Account(5000, client));
-		
-	 
-		Account account=(Account)bank.getProduct(accountIndex);
-		Account account2=(Account)bank.getProduct(accountIndex2);
-		
-		
-		System.out.println(Bank.getInstance().getHistory());	 
- 
-		
-	 
-	}
 
+        Bank bank = Bank.getInstance();
+
+        int id = bank.addClient(new Client("93101012345", "Zenek", "Kowalski"));
+        Client client = Bank.getInstance().getClient(id);
+        int accountIndex = bank.addAccount(new Account(0, client));
+        int accountIndex2 = bank.addAccount(new Account(5000, client));
+
+        Account account = (Account) bank.getProduct(accountIndex);
+        Account account2 = (Account) bank.getProduct(accountIndex2);
+
+        final AccountsSumBalanceReport report = new AccountsSumBalanceReport();
+        bank.accountReport(report);
+        report.showReport();
+
+        System.out.println(Bank.getInstance().getHistory());
+    }
 }

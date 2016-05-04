@@ -22,6 +22,17 @@ public class AccountBalanceReport implements Visitor {
         }
     }
 
+    @Override
+    public void showReport() {
+        System.out.println("### REPORT ###");
+
+        for (Product product : getProducts()) {
+            System.out.println("balance = " + product.getBalance());
+        }
+
+        System.out.println("### END ###");
+    }
+
     public ArrayList<Product> getProducts() {
         return products;
     }

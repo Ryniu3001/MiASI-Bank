@@ -14,6 +14,13 @@ public class AccountsSumBalanceReport implements Visitor {
         accountsSumBalance += product.getBalance();
     }
 
+    @Override
+    public void showReport() {
+        System.out.println("### REPORT ###");
+        System.out.println("Accounts sum balance = " + getSum());
+        System.out.println("### END ###");
+    }
+
     public long getSum() {
         return accountsSumBalance;
     }

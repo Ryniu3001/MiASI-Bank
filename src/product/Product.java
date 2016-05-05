@@ -14,7 +14,6 @@ public abstract class Product implements Visitable {
 	protected double balance;
 	protected List<Operation> historyOfProduct;
 	protected Date startDate;
-	protected Boolean isOpen;
 	protected InterestMechanism interestMechanism;
 
 	// odsetki,saldo
@@ -24,7 +23,7 @@ public abstract class Product implements Visitable {
 		Calendar cal = Calendar.getInstance();
 		this.startDate = cal.getTime();
 		this.historyOfProduct = new ArrayList<Operation>();
-		this.isOpen = true;
+	 
 
 	}
 
@@ -32,13 +31,9 @@ public abstract class Product implements Visitable {
 		return balance;
 	}
 
-	public void closeProduct() {
-		isOpen = false;
-	}
+	
 
-	public Boolean getIsOpen() {
-		return isOpen;
-	}
+	 
 
 	public void setBalance(double balance) {
 		this.balance = balance;

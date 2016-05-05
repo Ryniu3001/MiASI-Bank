@@ -3,6 +3,7 @@ package operations;
 import java.util.Calendar;
 
 import product.Account;
+import product.IAccount;
 
  
 
@@ -10,9 +11,9 @@ public class PayOff extends Operation {
 
 	
 	private double amount;
-	private Account from;
+	private IAccount from;
     
-	public PayOff(Account from,double amount) {
+	public PayOff(IAccount from,double amount) {
 	 
 		this.from=from;
 		this.amount=amount;

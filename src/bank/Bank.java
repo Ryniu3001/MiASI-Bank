@@ -14,22 +14,15 @@ import java.util.List;
 
 public class Bank {
 
-    private static List<Client> clients;
-    private static List<Operation> bankHistoryOperation;
-    private static List<Product> products;
-    private static Bank instance = null;
+    private List<Client> clients;
+    private List<Operation> bankHistoryOperation;
+    private List<Product> products;
+    
 
-    private Bank() {
+    public Bank() {
         clients = new ArrayList<Client>();
         bankHistoryOperation = new ArrayList<Operation>();
         products = new ArrayList<Product>();
-    }
-
-    public static Bank getInstance() {
-        if (instance == null) {
-            instance = new Bank();
-        }
-        return instance;
     }
 
     public int addClient(Client client) {
@@ -38,8 +31,6 @@ public class Bank {
     }
 
     public int addAccount(Account account) {
-        // tutaj powinna by� walidacja czy istnieje klient o idClient
-        // czy debet i balance jest wi�kszy od 0 je�li nie to zg�o� wyj�tek
         products.add(account);
 
         return products.size() - 1;
@@ -64,8 +55,14 @@ public class Bank {
     ////////////////////////////////////////////////
     // operacja przelewu
     public void transfer(Account to, Account from, double amount) throws Exception {
-        Operation operation = new Transfer(to, from, amount);
-        from.executeOperation(operation);
+    	if(products.contains(to)){
+	        Operation operation = new Transfer(to, from, amount);
+	        from.executeOperation(operation);
+    	}
+    	else
+    	{
+    		BankMediator.getInstance().makePaymentBetweenBanks(this,from,to,amount);
+    	}
 
     }
 
@@ -124,5 +121,9 @@ public class Bank {
         for (Product product : products) {
             product.accept(report);
         }
+    }
+    public boolean ifBankContainsAccount(Account account)
+    {
+    	return products.contains(account);
     }
 }

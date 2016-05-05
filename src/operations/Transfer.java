@@ -2,20 +2,28 @@ package operations;
 
 
 import product.Account;
+import product.IAccount;
 
  
 
 public class Transfer extends Operation {
 
-	private Account from;
-	private Account to;
+	private IAccount from;
+	private IAccount to;
     private double amount;
 
- 
-	public Transfer(Account toAccount,Account fromAccount,double amount) {
+    /**
+	 * @param toAccount
+	 * konto docelowe
+	 * @param fromAccount
+	 * konto źródłowe
+	 * @param amount
+	 * konto kwota przelewu
+	 */
+	public Transfer(IAccount toAccount,IAccount fromAccount,double amount) {
 	 
 		this.to=toAccount;
-		this.from=toAccount;
+		this.from=fromAccount;
 		 this.amount=amount;
 	}
 	 

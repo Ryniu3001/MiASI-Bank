@@ -1,5 +1,6 @@
 package interests;
 
+import product.AccountDecorator;
 import product.Account;
 
 public class FirstInterestForAccount extends InterestMechanism {
@@ -9,6 +10,7 @@ public class FirstInterestForAccount extends InterestMechanism {
 		product = account;
 	}
 	
+
 	@Override
 	public void calculate() {
 		if (product.getBalance() <= 1000){

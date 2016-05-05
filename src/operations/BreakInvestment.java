@@ -21,7 +21,6 @@ public class BreakInvestment extends Operation {
 		
 		//tutaj trzeba obliczyc odsetki i je dodac
 		this.investment.getAccount().addBalance(investment.getBalance());
-		investment.closeProduct();
 		 
 	}
 

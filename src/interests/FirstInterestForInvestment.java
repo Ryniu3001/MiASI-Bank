@@ -21,7 +21,7 @@ public class FirstInterestForInvestment extends InterestMechanism {
 		}
 		
 		Investment investment = (Investment)product;
-		if (investment.getBalance()> 0 && !investment.getIsOpen()){
+		if (investment.getBalance()> 0){
 			product.setBalance(product.getBalance() + (product.getBalance()*percentage));
 		}		
 	}

@@ -17,12 +17,8 @@ public class RefundCredit extends Operation {
 		this.credit=credit; 
 	}
 	 
-	public void execute() {
-		
-		 
-		this.credit.getAccount().substractBalance(credit.getBalance());
-		credit.closeProduct();
-		 
+	public void execute() {			 
+		this.credit.getAccount().substractBalance(credit.getBalance());	 
 	}
 
 }

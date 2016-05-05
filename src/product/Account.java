@@ -6,23 +6,24 @@ import java.util.List;
 import client.Client;
 import interests.FirstInterestForAccount;
 import operations.Operation;
+import productsState.AccountClosed;
+import productsState.AccountOpen;
+import productsState.IAccountState;
 import report.Visitor;
 
-public class Account extends Product {
+public class Account extends Product implements IAccount{
 
 	private List<Operation> historyOperation;
-
-	// lokaty //TODO: kredyt i lokaty ma konto czy klient?
 	private List<Investment> investments;
 	private List<Credit> credits;
-
 	private Client clientId;
+	private IAccountState state;
 
 	/**
 	 * @param balance
-	 *            saldo poczatkowe
+	 * saldo poczatkowe
 	 * @param debit
-	 *            maksymalna kwota debetu
+	 * maksymalna kwota debetu
 	 */
 	public Account(double balanceStart, Client clientId) {
 		super(balanceStart);
@@ -31,28 +32,32 @@ public class Account extends Product {
 		this.credits = new ArrayList<Credit>();
 		this.historyOperation = new ArrayList<Operation>();
 		this.interestMechanism = new FirstInterestForAccount(this);
+		this.state=new AccountOpen();
 	}
-
-
-	/////////////////////////////////////////////////////////////////////////
-	// operacje do dodawania i odejmowania z salda
-	// tutaj mozna zrobic walidacje np. jesli na koncie nie ma wystarczajaco
-	///////////////////////////////////////////////////////////////////////// kasy???
+	 
 	public void addBalance(double amount) {
-		this.balance += amount;
+		state.addBalance(this, amount);
 	}
 
 	public void substractBalance(double amount) {
-        if(balance >= amount) {
-            balance -= amount;
-        } else {
-            throw new RuntimeException("Too small balance");
-        }
+		state.substractBalance(this, amount);
 	}
-
-	@Override
+	public void closeAccount() {
+		this.state= new AccountClosed();
+	}
 	public void accept(Visitor visitor) {
 		visitor.visit(this);
 	}
+
+	public void setState(IAccountState state)
+	{
+		this.state=state;
+	}
+	public IAccountState getState()
+	{
+		return state;
+	}
+	
+	
 
 }

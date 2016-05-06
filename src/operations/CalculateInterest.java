@@ -10,9 +10,9 @@ import product.Product;
 public class CalculateInterest extends Operation {  
 	private Product product;
      
-	private InterestMechanism mechanism;
+
 	public CalculateInterest(Product product) {
-	 product=product;
+	 this.product=product;
 	 
 	}
 	 

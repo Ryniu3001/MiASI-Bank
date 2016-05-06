@@ -17,10 +17,16 @@ public class BreakInvestment extends Operation {
 		this.investment = investment;  
 	}
 	 
-	public void execute() {
-		
-		//tutaj trzeba obliczyc odsetki i je dodac
-		this.investment.getAccount().addBalance(investment.getBalance());
+	public void execute() throws Exception {
+		if(this.investment.getIsActive()){
+			
+			this.investment.getAccount().addBalance(investment.getBalance());
+			this.investment.setIsActive(false);
+		}else
+			
+		{
+				 throw new RuntimeException("This product is disactive");
+		}
 		 
 	}
 

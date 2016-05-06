@@ -9,7 +9,7 @@ import client.Client;
 import product.Account;
 import product.Credit;
 
-public class CreditTest {
+public class TakeCreditTest {
 
 //	Account account;
 //	@Before

@@ -14,7 +14,7 @@ public abstract class AccountDecorator extends Product implements IAccount{
  
 	protected Account account;
 	public AccountDecorator(Account account) {
-		super(account.getBalance());
+		super(account.getBalance(),account.clientId);
 		this.account=account;
 		
 	}

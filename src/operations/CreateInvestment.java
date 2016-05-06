@@ -19,7 +19,8 @@ public class CreateInvestment extends Operation {
 	
 	public void execute() throws Exception
 	{
-		this.investment.getAccount().substractBalance(investment.getBalance());
+		if(this.investment.getIsActive())
+			this.investment.getAccount().substractBalance(investment.getBalance());
  
 
 	}

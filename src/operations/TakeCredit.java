@@ -17,14 +17,18 @@ public class TakeCredit extends Operation {
     
 	public TakeCredit(Credit credit) {
 	 
-		 credit=credit;
+		 this.credit=credit;
 	     
 	}
 	 
-	public void execute() {
+	public void execute() throws Exception {
 		
+		 if(this.credit.getIsActive()){
+			 this.credit.getAccount().addBalance(credit.getBalance());
+		 }
+		 else
+			 throw new RuntimeException("This product is disactive");
 		 
-		this.credit.getAccount().addBalance(credit.getBalance());
 	 
 		 
 	}

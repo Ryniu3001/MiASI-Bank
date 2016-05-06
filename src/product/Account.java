@@ -14,9 +14,8 @@ import report.Visitor;
 public class Account extends Product implements IAccount{
 
 	private List<Operation> historyOperation;
-	private List<Investment> investments;
-	private List<Credit> credits;
-	private Client clientId;
+ 
+
 	private IAccountState state;
 
 	/**
@@ -26,10 +25,9 @@ public class Account extends Product implements IAccount{
 	 * maksymalna kwota debetu
 	 */
 	public Account(double balanceStart, Client clientId) {
-		super(balanceStart);
+		super(balanceStart,clientId);
 		this.clientId = clientId;
-		this.investments = new ArrayList<Investment>();
-		this.credits = new ArrayList<Credit>();
+
 		this.historyOperation = new ArrayList<Operation>();
 		this.interestMechanism = new FirstInterestForAccount(this);
 		this.state=new AccountOpen();

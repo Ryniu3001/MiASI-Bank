@@ -12,7 +12,12 @@ public class PayIn extends Operation {
 	
 	private double amount;
 	private IAccount to;
-    
+	  /**
+			 * @param to
+			 * konto docelowe
+			 * @param amount
+			 * konto kwota przelewu
+			 */
 	public PayIn(IAccount to,double amount) {
 	 
 		this.to=to;

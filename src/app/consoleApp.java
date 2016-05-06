@@ -9,24 +9,12 @@ public class consoleApp {
     public static void main(String[] args) throws Exception {
 
 		/*
-         * Wydaje mi się że dodawanie do historii banku powinno być realizowane w klasie Operacji.
-		 * Informacje np. o kredycie aktualnie mamy w kalsie konta, a czy nie powinno to być w klasie Klienta? 
-		 * Klient moze miec kilka kont i moze chciec z innegoi splacic kredyt - to samo z lokatą
-		 * 
-		 * 
-		 * Referencja do kredytu powinna byc w kliencie
-		 * 
-		 * 
-		 * W klasie abstrakcyjnej Operation dodać pole Product i zmienić jej podklasy tak aby to pole uzupełniały, aby w historii banku było można wyświetlić jakiego 
-		 * konta/produktu dotyczy operacja.
-		 * Opcjonalnie: flaga zabezpieczająca przed ponownym wykonaniem instancji operacji
-		 * 
-		 * Obliczenie odsetek ma nie powodowac zmiany stanu (InterestMechanizm) tylko zwracac wartosc, a dopiero operacja CalculateInterest ma dodawac do stnau konta
-		 * 
-		 * Wozrzec dekorator ma umożliwiać tworzenie debetu na koncie. Sama klasa Account nie wie nic o debecie.
-		 * 
-		 * Mediator - przelewy do innych bankow. Np jakas klasa KRS - jako mediator.
-		 */
+          do zrobienia
+          1. dokończenie testów
+          2. sprawdzenie czy mechanizmy odsetkowe działają prawidłowo
+          3. nie mamy żadnych testów na mockach
+		 
+		  */
 
         Bank bank=new Bank();
 

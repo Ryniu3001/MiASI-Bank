@@ -17,8 +17,14 @@ public class RefundCredit extends Operation {
 		this.credit=credit; 
 	}
 	 
-	public void execute() {			 
-		this.credit.getAccount().substractBalance(credit.getBalance());	 
+	public void execute() {	
+		if(this.credit.getIsActive()){
+			this.credit.getAccount().substractBalance(credit.getBalance());	 
+			this.credit.setIsActive(false);
+		}else
+		{
+			throw new RuntimeException("This product is disactive");
+		}
 	}
 
 }

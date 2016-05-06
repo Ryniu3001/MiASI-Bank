@@ -5,6 +5,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import client.Client;
 import interests.InterestMechanism;
 import operations.Operation;
 import report.Visitable;
@@ -13,15 +14,13 @@ public abstract class Product implements Visitable {
 
 	protected double balance;
 	protected List<Operation> historyOfProduct;
-	protected Date startDate;
 	protected InterestMechanism interestMechanism;
-
+	protected Client clientId;
 	// odsetki,saldo
-	public Product(double balance) {
+	public Product(double balance,Client client) {
 
 		this.balance = balance;
-		Calendar cal = Calendar.getInstance();
-		this.startDate = cal.getTime();
+		 this.clientId=client;
 		this.historyOfProduct = new ArrayList<Operation>();
 	 
 

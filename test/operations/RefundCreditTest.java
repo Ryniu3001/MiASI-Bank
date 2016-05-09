@@ -2,36 +2,46 @@ package operations;
 
 import static org.junit.Assert.*;
 
+import org.easymock.EasyMockRunner;
+import org.easymock.Mock;
+import org.easymock.TestSubject;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
 import client.Client;
 import product.Account;
 import product.Credit;
 
+@RunWith(EasyMockRunner.class)
 public class RefundCreditTest {
-//	Account account;
-//	Credit credit;
-//	
-//	@Before
-//	public void setUp(){
-//		Client client = new Client("Asd", "qwe");
-//		account = new Account(1000, client);
-//		credit = new Credit(50000, account);		
-//	}
-//	
-//	@Test
-//	public void refund1() throws Exception{
-//		RefundCredit refund = new RefundCredit(account, credit, 50000);
-//		assertTrue(refund.execute());
-//	}
-//	
-//	
-//	@Test(expected=Exception.class)
-//	public void refund2() throws Exception{
-//		RefundCredit refund = new RefundCredit(account, credit, 1000);
-//		refund.execute();
-//	}
-//	
-	//TODO: dodac przypadek w ktorym klient splaca wiecej niz wzial kredytu
+	@Mock
+	Client client;
+	@Mock
+	Account account = new Account(60000, client);
+	@TestSubject
+	Credit credit = new Credit(50000, account, client);
+
+	/**
+	 * Spłata kredytu
+	 * @throws Exception
+	 */
+	@Test
+	public void refund1() throws Exception{
+		RefundCredit refund = new RefundCredit(credit);
+		refund.execute();
+		assertFalse(credit.getIsActive());
+	}
+	
+	
+	/**
+	 * Spłata nieaktywnego kredytu
+	 * @throws Exception
+	 */
+	@Test(expected=Exception.class)
+	public void refund2() throws Exception{
+		credit.setIsActive(false);
+		RefundCredit refund = new RefundCredit(credit);
+		refund.execute();
+	}
 }

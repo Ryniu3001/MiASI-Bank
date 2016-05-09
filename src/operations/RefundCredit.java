@@ -7,6 +7,9 @@ import product.Credit;
 
  
 
+/**
+ * Spłata kredytu
+ */
 public class RefundCredit extends Operation {
 
 	
@@ -23,7 +26,7 @@ public class RefundCredit extends Operation {
 			this.credit.setIsActive(false);
 		}else
 		{
-			throw new RuntimeException("This product is disactive");
+			throw new RuntimeException("This product is inactive");
 		}
 	}
 

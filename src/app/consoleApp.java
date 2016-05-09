@@ -10,9 +10,9 @@ public class consoleApp {
 
 		/*
           do zrobienia
-          1. dokończenie testów
-          2. sprawdzenie czy mechanizmy odsetkowe działają prawidłowo
-          3. nie mamy żadnych testów na mockach
+          1. dokoĹ„czenie testĂłw
+          2. sprawdzenie czy mechanizmy odsetkowe dziaĹ‚ajÄ… prawidĹ‚owo
+          3. nie mamy ĹĽadnych testĂłw na mockach
 		 
 		  */
 

@@ -1,4 +1,9 @@
+/app/
 /bank/
+/client/
+/history/
+/interests/
 /operations/
 /product/
-/app/
+/productsState/
+/report/

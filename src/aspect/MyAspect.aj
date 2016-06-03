@@ -1,16 +1,15 @@
 import operations.Transfer;
+import product.Account;
 
 public aspect MyAspect {
 
-	pointcut function() : 
+	pointcut function() : 	
 		call ( void operations.Operation.execute()) && target(operations.Transfer);
 	
 	after(): function(){
-		System.out.println("ASPEKT");
+		Transfer transfer = (Transfer)thisJoinPoint.getTarget();
+		Account sourceAccount = (Account)transfer.getFrom();
+		sourceAccount.setBalance(sourceAccount.getBalance()-10);
 	}
 	
-	before(): function(){
-		System.out.println("ASPEKT");
-		System.out.println(((Transfer)thisJoinPoint.getTarget()).getAmount());
-	}
 }

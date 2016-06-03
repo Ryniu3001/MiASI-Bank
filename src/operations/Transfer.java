@@ -11,8 +11,22 @@ public class Transfer extends Operation {
 	private IAccount from;
 	private IAccount to;
     private double amount;
+    
+    
 
-    /**
+    public IAccount getFrom() {
+		return from;
+	}
+
+	public IAccount getTo() {
+		return to;
+	}
+
+	public double getAmount() {
+		return amount;
+	}
+
+	/**
 	 * @param toAccount
 	 * konto docelowe
 	 * @param fromAccount
@@ -31,7 +45,6 @@ public class Transfer extends Operation {
 	 
 		to.addBalance(amount);
 		from.substractBalance(amount);
-		
 	}
 
 }
